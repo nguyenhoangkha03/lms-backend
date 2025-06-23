@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "ES2021",
-    "sourceMap": true,
+    "declaration": true, // tạo file .d.ts
+    "removeComments": true, // xóa comments khi biên dịch
+    "emitDecoratorMetadata": true, // thêm thông tin vào metadata
+    "experimentalDecorators": true, // bắt buộc dùng DI và decorator
+    "allowSyntheticDefaultImports": true,  // hỗ trợ import default từ es module
+    "target": "ES2021", 
+    "sourceMap": true, // map từ js -> ts
     "outDir": "./dist",
-    "baseUrl": "./",
-    "incremental": true,
-    "skipLibCheck": true,
+    "baseUrl": "./", // cấu hình gốc cho các đường dẫn
+    "incremental": true, // tạo cache build
+    "skipLibCheck": true, // tối ưu compile
     "strictNullChecks": false, // Không bắt buộc kiểm tra null, undefined kỹ
     "forceConsistentCasingInFileNames": false, // Không bắt buộc phân biệt chữ hoa/thường trong tên file
     "noImplicitAny": false, // Không ép buộc phải định nghĩa kiểu nếu TypeScript không đoán được
@@ -19,20 +19,20 @@
     "noFallthroughCasesInSwitch": false, // Không cảnh báo khi case switch không break
     "paths": {
         "@/*": ["src/*"],
-        "@common/*": ["src/common/*"],
-        "@modules/*": ["src/modules/*"],
-        "@config/*": ["src/config/*"],
-        "@entities/*": ["src/entities/*"],
-        "@dto/*": ["src/dto/*"],
-        "@guards/*": ["src/guards/*"],
-        "@decorators/*": ["src/decorators/*"],
-        "@interceptors/*": ["src/interceptors/*"],
-        "@utils/*": ["src/utils/*"],
-        "@types/*": ["src/types/*"],
+        "@/common/*": ["src/common/*"],
+        "@/modules/*": ["src/modules/*"],
+        "@/config/*": ["src/config/*"],
+        "@/entities/*": ["src/entities/*"],
+        "@/dto/*": ["src/dto/*"],
+        "@/guards/*": ["src/guards/*"],
+        "@/decorators/*": ["src/decorators/*"],
+        "@/interceptors/*": ["src/interceptors/*"],
+        "@/utils/*": ["src/utils/*"],
+        "@/types/*": ["src/types/*"],
     },
     "resolveJsonModule": true, // cho phép import trực tiếp từ file json
     "esModuleInterop": true, // Cho phép tương thích ES module với CommonJS
-    "strict": true, // Bật toàn bộ các kiểm tra nghiêm ngặt
+    "strict": true, // Bật toàn bộ các kiểm tra nghiêm ngặt, ghi de cac cai tren
     "strictPropertyInitialization": false, // Cho phép không khởi tạo ngay trong constructor
   },
   "include": ["src/**/*.ts", "test/**/*.ts"],
