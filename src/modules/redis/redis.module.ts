@@ -35,6 +35,6 @@ export const REDIS_CLIENT = 'REDIS_CLIENT'; // Khai báo và xuất một hằng
       },
     },
   ],
-  exports: [REDIS_CLIENT],
+  exports: [REDIS_CLIENT, RedisService],
 })
 export class RedisModule {}
