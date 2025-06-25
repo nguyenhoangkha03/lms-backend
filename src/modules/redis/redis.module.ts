@@ -1,17 +1,16 @@
 import { Global, Module } from '@nestjs/common';
 import { RedisService } from './redis.service';
 import { RedisController } from './redis.controller';
-import { ConfigService } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { getRedisConfig } from '@/config/redis.config';
 import Redis from 'ioredis';
-
-export const REDIS_CLIENT = 'REDIS_CLIENT'; // Khai báo và xuất một hằng số chuỗi, định danh
+import { REDIS_CLIENT } from '@/common/constants/redis.constants';
 
 @Global()
 @Module({
+  imports: [ConfigModule],
   controllers: [RedisController],
   providers: [
-    RedisService,
     {
       provide: REDIS_CLIENT,
       inject: [ConfigService],
@@ -34,6 +33,7 @@ export const REDIS_CLIENT = 'REDIS_CLIENT'; // Khai báo và xuất một hằng
         return redis;
       },
     },
+    RedisService,
   ],
   exports: [REDIS_CLIENT, RedisService],
 })

@@ -1,4 +1,4 @@
-import { REDIS_CLIENT } from '@/modules/redis/redis.module';
+import { REDIS_CLIENT } from '@/common/constants/redis.constants';
 import { Inject, Injectable } from '@nestjs/common';
 import Redis from 'ioredis';
 import { DataSource } from 'typeorm';

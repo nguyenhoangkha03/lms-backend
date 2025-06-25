@@ -1,18 +1,35 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { RedisModule } from './modules/redis/redis.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+
+// Database và Redis modules
 import { DatabaseModule } from './modules/database/database.module';
+import { RedisModule } from './modules/redis/redis.module';
 import { HealthModule } from './health/health.module';
-import { ConfigModule } from '@nestjs/config';
+
+// config
+import { getTypeOrmConfig } from './config/typeorm.config';
 
 @Module({
   imports: [
+    // Config module - phải load đầu tiên
     ConfigModule.forRoot({
-      isGlobal: true, // ← bạn cần dòng này để ConfigService dùng được ở mọi module
+      isGlobal: true,
+      envFilePath: ['.env.local', '.env'],
+      cache: true, // Lần đầu gọi configService.get('REDIS_HOST') sẽ đọc từ .env, các lần sau sẽ đọc từ cache RAM (nhanh hơn rất nhiều).
     }),
-    RedisModule,
+
+    // Database module
+    TypeOrmModule.forRootAsync({
+      useFactory: getTypeOrmConfig,
+      inject: [ConfigService],
+    }),
+
+    // Global modules
     DatabaseModule,
+    RedisModule,
     HealthModule,
   ],
   controllers: [AppController],

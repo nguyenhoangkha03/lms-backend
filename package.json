@@ -29,7 +29,12 @@
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
     "docker:build": "docker build -t lms-backend .",
-    "docker:run": "docker run -p 3000:3000 lms-backend"
+    "docker:run": "docker run -p 3000:3000 lms-backend",
+
+    "db:setup": "bash scripts/database/setup.sh",
+    "db:backup": "bash scripts/database/backup.sh",
+    "db:restore": "bash scripts/database/restore.sh",
+    "db:migrate": "bash scripts/database/migrate.sh"
   },
   "dependencies": {
     "@nestjs-modules/mailer": "^2.0.2",

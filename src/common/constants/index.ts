@@ -1,0 +1,20 @@
+export const DATABASE_CONSTANTS = {
+  MAX_CONNECTION_LIMIT: 10,
+  CONNECTION_TIMEOUT: 60000,
+  QUERY_TIMEOUT: 30000,
+} as const;
+
+export const REDIS_CONSTANTS = {
+  DEFAULT_TTL: 3600, // 1 hour
+  SESSION_TTL: 86400, // 24 hours
+  CACHE_TTL: 1800, // 30 minutes
+  KEY_PREFIX: 'lms:',
+} as const;
+
+export const PAGINATION_CONSTANTS = {
+  DEFAULT_PAGE: 1,
+  DEFAULT_LIMIT: 10,
+  MAX_LIMIT: 100,
+  DEFAULT_SORT_BY: 'createdAt',
+  DEFAULT_SORT_ORDER: 'DESC',
+} as const;
